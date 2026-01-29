@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>💸 Expense Tracker</h1>
+    <p class="subtitle">Track your daily expenses easily</p>
+
+    <div class="top-bar">
+        <a class="btn" href="/add">➕ Add Expense</a>
+        <div class="total">Total: ₹{{ total }}</div>
+    </div>
+
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+
+        {% for e in expenses %}
+        <tr>
+            <td>{{ e.title }}</td>
+            <td>₹{{ e.amount }}</td>
+            <td>{{ e.category }}</td>
+            <td>{{ e.date }}</td>
+            <td>
+                <a class="delete-btn" href="/delete/{{ loop.index0 }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+</body>
+</html>
